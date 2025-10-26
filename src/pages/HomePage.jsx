@@ -82,7 +82,7 @@ export default function HomePage() {
 
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-16">
                         {/* Card 1*/}
-                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow">
+                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:bg-linear-to-b hover:from-orange-50 hover:to-orange-100 transition-all">
                             <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center mb-6">
                                 <Smartphone className="w-6 h-6 text-blue-600" />
                             </div>
@@ -103,7 +103,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Card 2*/}
-                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow">
+                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:bg-linear-to-b hover:from-orange-50 hover:to-orange-100 transition-all">
                             <div className="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center mb-6">
                                 <Lock className="w-6 h-6 text-red-600" />
                             </div>
@@ -124,7 +124,7 @@ export default function HomePage() {
                         </div>
 
                         {/* Card 3*/}
-                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl transition-shadow">
+                        <div className="bg-white rounded-3xl p-8 shadow-sm hover:shadow-xl hover:bg-linear-to-b hover:from-orange-50 hover:to-orange-100 transition-all">
                             <div className="w-12 h-12 bg-emerald-100 rounded-full flex items-center justify-center mb-6">
                                 <Users className="w-6 h-6 text-emerald-600" />
                             </div>
