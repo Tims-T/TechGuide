@@ -2,8 +2,7 @@ import { useEffect, useState } from "react";
 import { createClient } from "@supabase/supabase-js";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
-import SignInPage from "./pages/SignIn";
-import SignUpPage from "./pages/SignUp";
+import Auth from "./pages/Auth";
 import RootLayout from "./layouts/RootLayout";
 import HomePage from "./pages/HomePage";
 
@@ -33,8 +32,7 @@ function App() {
       <Routes>
         <Route element={<RootLayout />}>
           <Route index element={<HomePage />} />
-          <Route index path="/signin" element={<SignInPage />} />
-          <Route index path="/signup" element={<SignUpPage />} />
+          <Route index path="/auth" element={<Auth />} />
         </Route>
       </Routes>
     </BrowserRouter>
