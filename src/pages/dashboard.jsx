@@ -1,7 +1,6 @@
 import {
-    Monitor, LogOut, Mail, Video, MessageCircle, ShoppingCart,
-    Shield, Phone, Book, AlertTriangle, CheckCircle,
-    Clock, ArrowRight, Bell, Users, Lock, TrendingUp, Sparkles
+    Monitor, LogOut, Mail, Video, MessageCircle, ShoppingCart, Phone, AlertTriangle, CheckCircle,
+    Clock, ArrowRight, Bell, Users, Lock, Sparkles
 } from "lucide-react";
 import { Link, useNavigate } from "react-router-dom";
 import { supabase } from "../App";
