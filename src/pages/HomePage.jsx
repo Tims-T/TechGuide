@@ -1,6 +1,10 @@
 import { Monitor, Phone, ArrowRight, Smartphone, Lock, Users } from "lucide-react";
+import { Link } from "react-router-dom";
+import { useState } from "react";
 
 export default function HomePage() {
+    const [showPhoneNumber, setShowPhoneNumber] = useState(false);
+
     return (
         <div>
             <div className="min-h-80 min-w-screen bg-linear-to-b from-white100 via-orange-100 to-rose-100">
@@ -17,13 +21,29 @@ export default function HomePage() {
                             <a href="#support" className="text-sm font-semibold text-gray-700 hover:text-gray-900">SUPPORT</a>
                             <a href="#about" className="text-sm font-semibold text-gray-700 hover:text-gray-900">ABOUT</a>
                         </nav>
-                        <div className="flex items-center gap-4">
-                            <button className="hidden md:flex items-center gap-2 text-gray-700 hover:text-gray-900">
-                                <Phone className="w-5 h-5" />
-                            </button>
-                            <button className="bg-gray-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-colors">
+                        <div className={`flex items-center transition-all duration-300 ${showPhoneNumber ? 'gap-2' : 'gap-0'}`}>
+                            <div className="hidden md:flex items-center overflow-hidden">
+                                <button
+                                    onClick={() => setShowPhoneNumber(!showPhoneNumber)}
+                                    className={`p-2 rounded-full transition-all duration-300 ${showPhoneNumber
+                                        ? 'bg-emerald-100 text-emerald-600'
+                                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200 hover:text-gray-900'
+                                        }`}
+                                >
+                                    <Phone className="w-5 h-5" />
+                                </button>
+                                <div
+                                    className={`flex items-center gap-2 bg-linear-to-r from-emerald-500 to-emerald-600 text-white px-4 py-2 rounded-full shadow-lg transition-all duration-500 ease-out ${showPhoneNumber
+                                        ? 'max-w-xs opacity-100 ml-1'
+                                        : 'max-w-0 opacity-0 ml-0'
+                                        }`}
+                                >
+                                    <span className="text-sm font-bold whitespace-nowrap">(123) 456-7890</span>
+                                </div>
+                            </div>
+                            <Link to="/signup" className={`bg-gray-900 text-white px-6 py-2.5 rounded-full text-sm font-semibold hover:bg-gray-800 transition-all duration-300 ${showPhoneNumber ? 'ml-0' : '-ml-2'}`}>
                                 GET STARTED
-                            </button>
+                            </Link>
                         </div>
                     </div>
                 </header>
