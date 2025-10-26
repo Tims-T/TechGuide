@@ -15,7 +15,7 @@ export default function HomePage() {
                             <Monitor className="w-8 h-8 text-gray-900" />
                             <span className="text-xl font-bold text-gray-900">TECHGUIDE</span>
                         </div>
-                        <nav className="hidden md:flex items-center gap-8">
+                        <nav className="hidden md:flex items-center gap-8 absolute left-1/2 -translate-x-1/2">
                             <a href="#tutorials" className="text-sm font-semibold text-gray-700 hover:text-gray-900">TUTORIALS</a>
                             <a href="#safety" className="text-sm font-semibold text-gray-700 hover:text-gray-900">SAFETY</a>
                             <a href="#support" className="text-sm font-semibold text-gray-700 hover:text-gray-900">SUPPORT</a>
@@ -70,20 +70,25 @@ export default function HomePage() {
                         </h2>
 
                         <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-12">
-                            <button className="bg-emerald-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-600 transition-colors shadow-lg">
-                                START LEARNING
-                            </button>
-                            <button className="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 flex items-center gap-2">
-                                I NEED HELP
-                                <ArrowRight className="w-5 h-5" />
-                            </button>
+                            <Link to="/signup">
+                                <button className="bg-emerald-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:bg-emerald-600 transition-colors shadow-lg">
+                                    START LEARNING
+                                </button>
+                            </Link>
+
+                            <Link to="/signup">
+                                <button className="bg-white text-gray-900 px-8 py-4 rounded-full text-lg font-semibold hover:bg-gray-50 transition-colors border-2 border-gray-200 flex items-center gap-2">
+                                    I NEED HELP
+                                    <ArrowRight className="w-5 h-5" />
+                                </button>
+                            </Link>
                         </div>
                     </div>
-                </section>
-            </div>
+                </section >
+            </div >
 
             {/* What We Do Section */}
-            <section className="py-16 bg-gray-50">
+            < section className="py-16 bg-gray-50" >
                 <div className="max-w-7xl mx-auto px-6 lg:px-8">
                     <div className="text-center mb-16">
                         <span className="inline-block px-4 py-2 bg-emerald-100 text-emerald-800 rounded-full text-sm font-bold mb-6">
@@ -169,7 +174,7 @@ export default function HomePage() {
                         </div>
                     </div>
                 </div>
-            </section>
+            </section >
         </div >
     )
 }
