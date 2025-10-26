@@ -1,9 +1,16 @@
 import { Monitor, Phone, ArrowRight, Smartphone, Lock, Users } from "lucide-react";
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { UserAuth } from "../context/AuthContext";
 
 export default function HomePage() {
     const [showPhoneNumber, setShowPhoneNumber] = useState(false);
+
+    const {session, signUpNewUser, signOut, signIn} = UserAuth();
+
+    console.log(session)
+
+
 
     return (
         <div>
