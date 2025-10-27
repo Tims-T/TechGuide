@@ -32,7 +32,7 @@ function SignUpPage() {
             // Optionally redirect after a delay
             setTimeout(() => {
                 navigate("/signin");
-            }, 2000);
+            }, 4000);
         } else {
             setError(result.error?.message || "Failed to create account. Please try again.");
         }

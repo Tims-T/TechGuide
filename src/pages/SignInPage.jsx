@@ -1,19 +1,41 @@
 import { Monitor } from "lucide-react";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { UserAuth } from "../context/AuthContext";
 
 const SignInPage = () => {
 
-    const [isLogin, setIsLogin] = useState(true);
-    const [fullName, setFullName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
+    const [error, setError] = useState("");
+
+    const { session, signIn } = UserAuth();
+    const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setLoading(true);
+        setError("");
+
+        const result = await signIn(email, password);
+
+        if (result.success) {
+            // Clear form
+            setEmail("");
+            setPassword("");
+            navigate("/dashboard");
+        } else {
+            setError(result.error?.message || "Failed to sign in. Please check your credentials.");
+        }
+
+        setLoading(false);
     };
+
+    // Redirect if already logged in
+    if (session) {
+        return <Navigate to="/dashboard" replace />;
+    }
 
 
 
@@ -36,6 +58,13 @@ const SignInPage = () => {
                     </p>
 
                     <form onSubmit={handleSubmit} className="space-y-4">
+
+                        {error && (
+                            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+                                {error}
+                            </div>
+                        )}
+
                         <div>
                             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                                 Email Address
@@ -77,8 +106,8 @@ const SignInPage = () => {
 
                     <p className="text-center text-gray-600 text-sm mt-6">
                         {"Don't have an account? "}
-                        <Link to="/signup">
-                            <text className="text-emerald-600 font-semibold hover:text-emerald-700">Sign Up</text>
+                        <Link to="/signup" className="text-emerald-600 font-semibold hover:text-emerald-700">
+                            Sign Up
                         </Link>
                     </p>
                 </div>
