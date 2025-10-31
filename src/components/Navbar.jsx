@@ -32,7 +32,7 @@ export default function Navbar() {
         <header className="bg-white shadow-sm sticky top-0 z-50">
             <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5">
                 <div className="flex justify-between items-center">
-                    <Link to="/" className="flex items-center gap-2">
+                    <Link to="/dashboard" className="flex items-center gap-2">
                         <Monitor className="w-8 h-8 text-gray-900" />
                         <span className="text-xl font-bold text-gray-900">TECHGUIDE</span>
                     </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
                                 <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg border border-gray-200 py-2 z-50">
                                     <button
                                         onClick={() => {
-                                            navigate("/profile");
+                                            navigate("/userprofile");
                                             setIsDropdownOpen(false);
                                         }}
                                         className="w-full flex items-center gap-3 px-4 py-3 hover:bg-gray-50 transition-colors text-left"

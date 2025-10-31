@@ -4,6 +4,8 @@ import SignUpPage from "./pages/SignUpPage";
 import Dashboard from "./pages/dashboard";
 import AllCourses from "./pages/AllCourses";
 import ConfirmPage from "./pages/confirmpage";
+import Settings from "./pages/settings";
+import UserProfile from "./pages/userprofile";
 import App from "./App";
 
 
@@ -13,5 +15,7 @@ export const router = createBrowserRouter([
     { path: "/signup", element: <SignUpPage /> },
     { path: "/confirm", element: <ConfirmPage /> },
     { path: "/dashboard", element: <Dashboard /> },
-    { path: "/allcourses", element: <AllCourses /> }
+    { path: "/allcourses", element: <AllCourses /> },
+    { path: "/settings", element: <Settings /> },
+    { path: "/userprofile", element: <UserProfile /> }
 ])
