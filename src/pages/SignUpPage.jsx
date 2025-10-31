@@ -5,7 +5,8 @@ import { UserAuth } from "../context/AuthContext";
 
 function SignUpPage() {
 
-    const [fullName, setFullName] = useState("");
+    const [firstName, setFirstName] = useState("");
+    const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [loading, setLoading] = useState(false);
@@ -26,7 +27,8 @@ function SignUpPage() {
         if (result.success) {
             setSuccessMessage("Account created successfully! Check your email to verify your account.");
             // Clear form
-            setFullName("");
+            setfirstName("");
+            setlastName("");
             setEmail("");
             setPassword("");
             // Optionally redirect after a delay
@@ -56,7 +58,7 @@ function SignUpPage() {
             </header>
 
             <div className="flex-1 flex items-center justify-center px-6">
-                <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-md w-full">
+                <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12 max-w-lg w-full">
                     <h1 className="text-4xl font-black text-gray-900 mb-2">
                         {"Get Started"}
                     </h1>
@@ -78,19 +80,36 @@ function SignUpPage() {
                             </div>
                         )}
 
-                        <div>
-                            <label htmlFor="fullName" className="block text-sm font-semibold text-gray-700 mb-2">
-                                Full Name
-                            </label>
-                            <input
-                                type="text"
-                                id="fullName"
-                                value={fullName}
-                                onChange={(e) => setFullName(e.target.value)}
-                                className="w-full flex h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-base ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
-                                placeholder="Enter your name"
-                            />
+                        <div className="flex flex-row gap-4 justify-between">
+                            <div>
+                                <label htmlFor="firstName" className="block text-sm font-semibold text-gray-700 mb-2">
+                                    First Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="firstName"
+                                    value={firstName}
+                                    onChange={(e) => setFirstName(e.target.value)}
+                                    className="w-full flex h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-base ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="Enter your first name"
+                                />
+                            </div>
+                            <div>
+                                <label htmlFor="Last Name" className="block text-sm font-semibold text-gray-700 mb-2">
+                                    Last Name
+                                </label>
+                                <input
+                                    type="text"
+                                    id="lastName"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    className="w-full flex h-10 rounded-md border border-gray-300 bg-white px-3 py-2 text-base ring-offset-white file:border-0 file:bg-transparent file:text-sm file:font-medium placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 focus-visible:ring-offset-2 disabled:cursor-not-allowed disabled:opacity-50"
+                                    placeholder="Enter your last name"
+                                />
+                            </div>
                         </div>
+
+
 
 
                         <div>
