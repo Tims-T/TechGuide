@@ -2,8 +2,6 @@
 import { createContext, useState, useContext, useEffect } from "react";
 import { createClient } from "@supabase/supabase-js";
 const AuthContext = createContext()
-
-
 const apikey = import.meta.env.VITE_SUPABASE_PUBLISHABLE_KEY;
 const url = import.meta.env.VITE_SUPABASE_URL;
 
@@ -11,7 +9,6 @@ export const supabase = createClient(url, apikey);
 
 export const AuthContextProvider = ({ children }) => {
     const [session, setSession] = useState(null);
-
 
     const signUpNewUser = async (email, password) => {
         const { data, error } = await supabase.auth.signUp({
@@ -49,8 +46,6 @@ export const AuthContextProvider = ({ children }) => {
         }
     }
 
-
-
     const signOut = async () => {
         const { error } = await supabase.auth.signOut()
 
@@ -62,7 +57,6 @@ export const AuthContextProvider = ({ children }) => {
         return { success: true }
 
     }
-
 
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) => {
@@ -78,14 +72,41 @@ export const AuthContextProvider = ({ children }) => {
         return () => subscription.unsubscribe()
     }, [])
 
+    const getUserData = async () => {
+        const {
+            data: { user },
+            error: userError
+        } = await supabase.auth.getUser();
 
+        if (userError) {
+            console.error("Error getting auth user:", userError);
+            return { success: false, error: userError };
+        }
+
+        if (!user) {
+            return { success: false, error: "No authenticated user" };
+        }
+
+        const { data, error } = await supabase
+            .from("users")
+            .select("first_name, last_name, email")
+            .eq("user_id", user.id)
+            .single();
+
+        if (error) {
+            console.error("Issue getting user data.", error);
+            return { success: false, error };
+        }
+
+        return { success: true, data };
+    }
 
 
 
 
 
     return (
-        <AuthContext.Provider value={{ session, signUpNewUser, signOut, signIn }}>
+        <AuthContext.Provider value={{ session, signUpNewUser, signOut, signIn, getUserData }}>
             {children}
         </AuthContext.Provider>
     )

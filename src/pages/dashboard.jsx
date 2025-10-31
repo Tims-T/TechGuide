@@ -4,18 +4,25 @@ import {
 } from "lucide-react";
 import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import DashboardNavbar from "../components/Navbar";
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const { session } = UserAuth();
+    const { session, getUserData } = UserAuth();
     const user = session?.user;
+    const [userData, setUserData] = useState(null);
 
     // Redirect to signin if not authenticated
     useEffect(() => {
         if (session === null) {
             navigate("/signin");
+        } else if (session?.user) {
+            getUserData().then((res) => {
+                if (res.success) {
+                    setUserData(res.data);
+                }
+            });
         }
     }, [session, navigate]);
 
@@ -104,7 +111,8 @@ export default function Dashboard() {
                     <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-6 mb-8">
                         <div>
                             <h1 className="text-5xl md:text-6xl font-black text-gray-900 mb-3">
-                                Welcome Back
+                                Welcome Back{userData?.first_name ? `, ${userData.first_name}` : ''}
+
                             </h1>
                             {user?.email && (
                                 <p className="text-xl text-gray-600">
