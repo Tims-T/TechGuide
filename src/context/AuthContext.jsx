@@ -11,6 +11,23 @@ export const AuthContextProvider = ({ children }) => {
     const [session, setSession] = useState(null);
 
     const signUpNewUser = async (email, password, firstName, lastName) => {
+        // Check if email already exists using RPC
+        const { data: emailExists, error: checkError } = await supabase
+            .rpc('check_email_exists', { check_email: email });
+
+        if (checkError) {
+            console.error('Error checking email:', checkError);
+            // Continue anyway if check fails
+        }
+
+        // If email exists, return error
+        if (emailExists) {
+            return {
+                success: false,
+                error: { message: 'This email is already registered. Please sign in instead.' }
+            };
+        }
+
         const { data, error } = await supabase.auth.signUp({
             email: email,
             password: password,
@@ -31,6 +48,8 @@ export const AuthContextProvider = ({ children }) => {
         // The database trigger will automatically create the user record
         return { success: true, data }
     }
+
+
 
     const signIn = async (email, password) => {
         try {

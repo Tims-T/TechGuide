@@ -82,7 +82,14 @@ function SignUpPage() {
 
                         {error && (
                             <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
-                                {error}
+                                <p>{error}</p>
+                                {error.includes('already registered') && (
+                                    <p className="text-sm mt-2">
+                                        <Link to="/signin" className="font-semibold underline hover:text-red-800">
+                                            Click here to sign in
+                                        </Link>
+                                    </p>
+                                )}
                             </div>
                         )}
 
