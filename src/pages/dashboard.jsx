@@ -1,14 +1,15 @@
 import {
-    Monitor, LogOut, Mail, Video, MessageCircle, ShoppingCart, Phone, AlertTriangle, CheckCircle,
-    Clock, ArrowRight, Bell, Users, Lock, Sparkles
+    Mail, Video, MessageCircle, ShoppingCart, Phone, AlertTriangle, CheckCircle,
+    Clock, ArrowRight, Users, Lock, Sparkles
 } from "lucide-react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { UserAuth } from "../context/AuthContext";
 import { useEffect } from "react";
+import DashboardNavbar from "../components/Navbar";
 
 export default function Dashboard() {
     const navigate = useNavigate();
-    const { session, signOut } = UserAuth();
+    const { session } = UserAuth();
     const user = session?.user;
 
     // Redirect to signin if not authenticated
@@ -17,13 +18,6 @@ export default function Dashboard() {
             navigate("/signin");
         }
     }, [session, navigate]);
-
-    const handleSignOut = async () => {
-        const result = await signOut();
-        if (result.success) {
-            navigate("/");
-        }
-    };
 
     // Show loading or nothing while checking auth
     if (session === null) {
@@ -102,30 +96,7 @@ export default function Dashboard() {
 
     return (
         <div className="min-h-screen bg-linear-to-b from-orange-50 via-orange-50 to-white">
-            {/* Header */}
-            <header className="bg-white shadow-sm sticky top-0 z-50">
-                <div className="max-w-7xl mx-auto px-6 lg:px-8 py-5">
-                    <div className="flex justify-between items-center">
-                        <Link to="/" className="flex items-center gap-2">
-                            <Monitor className="w-8 h-8 text-gray-900" />
-                            <span className="text-xl font-bold text-gray-900">TECHGUIDE</span>
-                        </Link>
-                        <div className="flex items-center gap-4">
-                            <button className="relative p-2 hover:bg-gray-100 rounded-full transition-colors">
-                                <Bell className="w-6 h-6 text-gray-700" />
-                                <span className="absolute top-0 right-0 w-5 h-5 bg-red-500 rounded-full flex items-center justify-center text-xs font-bold text-white">2</span>
-                            </button>
-                            <button
-                                onClick={handleSignOut}
-                                className="flex items-center gap-2 px-4 py-2 bg-gray-900 text-white rounded-full hover:bg-gray-800 transition-colors text-sm font-semibold"
-                            >
-                                <LogOut className="w-4 h-4" />
-                                Sign Out
-                            </button>
-                        </div>
-                    </div>
-                </div>
-            </header>
+            <DashboardNavbar />
 
             <main className="max-w-7xl mx-auto px-6 lg:px-8 py-12 pb-20">
                 {/* Welcome Section */}
@@ -162,10 +133,12 @@ export default function Dashboard() {
                         <div>
                             <div className="flex items-center justify-between mb-6">
                                 <h2 className="text-3xl font-black text-gray-900">Your Courses</h2>
-                                <button className="text-gray-600 hover:text-gray-900 font-semibold text-sm flex items-center gap-1">
-                                    View All
-                                    <ArrowRight className="w-4 h-4" />
-                                </button>
+                                <Link to="/allcourses">
+                                    <button className="text-gray-600 hover:text-gray-900 font-semibold text-sm flex items-center gap-1">
+                                        View All
+                                        <ArrowRight className="w-4 h-4" />
+                                    </button>
+                                </Link>
                             </div>
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 {tutorials.map((tutorial) => {

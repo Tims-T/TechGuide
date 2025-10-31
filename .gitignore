@@ -26,3 +26,7 @@ dist-ssr
 .env.*
 .env 
 .env.local
+
+src/pages/allcourses.jsx
+allcourses.jsx
+allcourses
