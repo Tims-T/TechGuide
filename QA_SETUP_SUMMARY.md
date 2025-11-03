@@ -57,51 +57,6 @@ tests/
 
 ---
 
-## Next Steps for Jira
-
-Create these tickets:
-
-### 1. KAN-XX: Setup Automated Test Infrastructure
-- **Status**: DONE
-- **Description**: Install and configure Playwright, Vitest, and testing libraries
-- **Evidence**: This setup, all config files created
-
-### 2. KAN-XX: Create Health Check Monitoring System
-- **Status**: DONE
-- **Description**: Automated tests to monitor server uptime and latency
-- **Evidence**: `tests/integration/healthcheck.test.js`
-
-### 3. KAN-XX: Create E2E Test Suite for Core User Flows
-- **Status**: IN PROGRESS
-- **Description**: Browser tests for homepage, navigation, sign-up, etc.
-- **Current**: 2 tests created
-- **TODO**: Add tests for:
-  - Sign up flow
-  - Sign in flow
-  - Course navigation
-  - Tutorial interaction
-  - Scam detection features
-
-### 4. KAN-XX: Setup Test Coverage Reporting
-- **Status**: DONE
-- **Description**: Configure code coverage tracking
-- **Evidence**: Can run `npm run test:coverage`
-
-### 5. KAN-XX: Create Integration Tests for Supabase
-- **Status**: TODO
-- **Description**: Test authentication, database queries, API calls
-- **Location**: `tests/integration/`
-
-### 6. KAN-XX: Manual Testing - [Feature Name]
-- **Status**: TODO (create per feature)
-- **Description**: Manual test plans for features
-- **Examples**: 
-  - Scam detection accuracy
-  - Tutorial completeness
-  - User experience flows
-
----
-
 ## Files to Commit to GitHub
 ```bash
 # Add all new test files

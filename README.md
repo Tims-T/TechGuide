@@ -12,7 +12,8 @@ TechGuide empowers seniors to stay **connected, independent, and secure** in the
 2. [Features](#features)  
 3. [Team Roles](#team-roles)  
 4. [Tech Stack](#tech-stack)  
-5. [Project Setup](#project-setup)  
+5. [Project Setup](#project-setup)
+6. [Testing](#testing)  
 
 ---
 
@@ -63,8 +64,10 @@ TechGuide’s mission is to bridge the digital divide by making technology educa
 - **Database Hosting:** Managed via Supabase Cloud
 
 ### Testing
-- **Framework:**  *(TBD)*  
-- **Automation:** *(TBD)* 
+- **Unit/Integration Testing:** Vitest
+- **E2E Testing:** Playwright
+- **Test Runner:** npm test (unit/integration), npm run test:e2e (browser tests)
+- **Coverage Reporting:** Vitest coverage 
 
 ---
 
@@ -79,7 +82,7 @@ TechGuide’s mission is to bridge the digital divide by making technology educa
 ### Installation
 ```bash
 # Clone the repository
-git clone https://github.com/<your-org>/techguide.git
+git clone https://github.com/Timmer-1/TechGuide.git
 
 # Navigate into the project
 cd techguide
@@ -87,5 +90,49 @@ cd techguide
 # Install dependencies
 npm install
 
+# Install Playwright browsers (for E2E testing)
+npx playwright install
+
 # Start development server
 npm run dev
+```
+
+---
+
+## Testing
+
+TechGuide uses automated testing to ensure reliability and quality.
+
+### Running Tests
+```bash
+# Run unit and integration tests
+npm test
+
+# Run tests with coverage report
+npm run test:coverage
+
+# Run end-to-end browser tests
+npm run test:e2e
+
+# Run E2E tests with visual UI
+npm run test:e2e:ui
+
+# View last E2E test report
+npx playwright show-report
+```
+
+### Test Structure
+```
+tests/
+├── e2e/           # End-to-end browser tests (Playwright)
+├── integration/   # Integration tests (API, health checks)
+└── unit/          # Unit tests (components, functions)
+```
+
+### Health Monitoring
+```bash
+# Check server health and latency
+npm test healthcheck
+```
+
+For detailed testing documentation, see [QA_SETUP_SUMMARY.md](QA_SETUP_SUMMARY.md).
