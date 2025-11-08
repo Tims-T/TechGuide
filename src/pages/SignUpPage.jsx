@@ -9,6 +9,7 @@ function SignUpPage() {
     const [lastName, setLastName] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const [userRole, setUserRole] = useState("")
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState("");
     const [successMessage, setSuccessMessage] = useState("");
@@ -33,6 +34,7 @@ function SignUpPage() {
             setLastName("");
             setEmail("");
             setPassword("");
+            setUserRole("")
 
             // Start countdown and redirect after 10 seconds
             let timeLeft = 10;
@@ -135,9 +137,6 @@ function SignUpPage() {
                             </div>
                         </div>
 
-
-
-
                         <div>
                             <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
                                 Email Address
@@ -167,6 +166,18 @@ function SignUpPage() {
                                 required
                             />
                         </div>
+
+                        <div className = "ml-auto">
+                            <label htmlFor="email" className="block text-sm font-semibold text-gray-700 mb-2">
+                                Register as?
+                            </label>
+                            <select value={userRole} onChange={(e)=>setUserRole(e.target.value)} required className="block w-60 p-2 border border-gray-300 rounded-lg bg-white text-gray-800 focus:ring-blue-500 focus:border-blue-500" >
+                                <option value="">-- choose an option --</option>
+                                <option value="Student">Student</option>
+                                <option value="Instructor">Instructor</option>
+                            </select>
+                        </div>
+                        
 
                         <button
                             type="submit"
