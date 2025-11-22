@@ -7,7 +7,7 @@ import ConfirmPage from "./pages/confirmpage";
 import Settings from "./pages/settings";
 import UserProfile from "./pages/userprofile";
 import About from "./pages/about";
-// import Tutorials from "./pages/tutorials";
+import Tutorials from "./pages/tutorials";
 import Safety from "./pages/safety";
 // import Support from "./pages/support";
 import App from "./App";
@@ -23,7 +23,7 @@ export const router = createBrowserRouter([
     { path: "/settings", element: <Settings /> },
     { path: "/userprofile", element: <UserProfile /> },
     { path: "/about", element: <About /> },
-    // { path: "/tutorials", element: <Tutorials /> }
+    { path: "/tutorials", element: <Tutorials /> },
     { path: "/safety", element: <Safety /> }
     // { path: "/support", element: <Support /> }
 
